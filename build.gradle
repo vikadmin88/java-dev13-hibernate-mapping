@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.spacetravel'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
+    implementation 'org.hibernate.orm:hibernate-core:6.4.4.Final'
+    // https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
+
+
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    implementation('com.h2database:h2:2.2.224')
+
+    // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
+    implementation 'org.flywaydb:flyway-core:10.10.0'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation 'org.slf4j:slf4j-api:2.0.12'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-reload4j
+    implementation 'org.slf4j:slf4j-reload4j:2.0.12'
+
+    // testing
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
