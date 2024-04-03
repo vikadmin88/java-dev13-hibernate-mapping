@@ -1,3 +1,3 @@
-## java-dev12-hibernate
+## java-dev13-hibernate-mapping
 
-### flyway migration, hibernate, annotations, validation, lombok, H2 db 
+### flyway migration, hibernate mapping, annotations, validation, lombok, H2 db 
