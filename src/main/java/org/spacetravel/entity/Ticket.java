@@ -1,16 +1,13 @@
 package org.spacetravel.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.h2.engine.User;
 
 import java.sql.Timestamp;
 
 @Entity
-@Data()
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
@@ -34,13 +31,11 @@ public class Ticket {
 
     @NotNull(message = "fromPlanet field null impossible")
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
-//    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="from_planet_id", nullable=false)
     private Planet fromPlanet;
 
     @NotNull(message = "toPlanet field null impossible")
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
-//    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="to_planet_id", nullable=false)
     private Planet toPlanet;
 }

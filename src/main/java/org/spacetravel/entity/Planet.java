@@ -31,11 +31,9 @@ public class Planet {
 
     @NotNull
     @OneToMany(mappedBy="fromPlanet", cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
-//    @OneToMany(mappedBy="fromPlanet", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Ticket> fromPlanet = new HashSet<>();
 
     @NotNull
     @OneToMany(mappedBy="toPlanet", cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
-//    @OneToMany(mappedBy="toPlanet", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Ticket> toPlanet = new HashSet<>();
 }
