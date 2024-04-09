@@ -1,4 +1,4 @@
-package org.spacetravel.utils;
+package org.spacetravel.utils.hibernate;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +9,7 @@ import java.util.Properties;
 
 public class HibernatePropertyReader {
     private static final Logger LOGGER = LoggerFactory.getLogger(HibernatePropertyReader.class.getCanonicalName());
+
     public static String getConnectionUrlForH2() {
         LOGGER.info("Reading database properties [hibernate.properties]...");
         try (InputStream input = HibernatePropertyReader.class.getClassLoader()

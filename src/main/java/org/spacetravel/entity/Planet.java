@@ -1,19 +1,20 @@
 package org.spacetravel.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
 @Getter
 @Setter
 @NoArgsConstructor
+//@ToString(onlyExplicitlyIncluded = true)
 @Table(name = "planet")
 public class Planet {
 
@@ -27,4 +28,14 @@ public class Planet {
     @NotNull
     @Size(min = 1, max = 500, message = "The length of the field name must be from 3 to 500 characters!")
     private String name;
+
+    @NotNull
+    @OneToMany(mappedBy="fromPlanet", cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
+//    @OneToMany(mappedBy="fromPlanet", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Ticket> fromPlanet = new HashSet<>();
+
+    @NotNull
+    @OneToMany(mappedBy="toPlanet", cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
+//    @OneToMany(mappedBy="toPlanet", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Ticket> toPlanet = new HashSet<>();
 }

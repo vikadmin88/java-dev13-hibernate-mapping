@@ -31,8 +31,8 @@ CREATE TABLE IF NOT EXISTS ticket
     to_planet_id   VARCHAR(10) NOT NULL,
     CONSTRAINT ticket_pk PRIMARY KEY (id),
     CONSTRAINT client_fk FOREIGN KEY (client_id) REFERENCES client (id),
-    CONSTRAINT from_planet_id_length CHECK (length(from_planet_id) > 0),
-    CONSTRAINT to_planet_id_length   CHECK (length(to_planet_id) > 0)
+    CONSTRAINT from_planet_id_fk FOREIGN KEY (from_planet_id) REFERENCES planet (id),
+    CONSTRAINT to_planet_id_fk FOREIGN KEY (to_planet_id) REFERENCES planet (id)
 );
 
 

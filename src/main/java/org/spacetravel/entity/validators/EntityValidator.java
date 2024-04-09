@@ -9,6 +9,7 @@ import java.util.Set;
 public class EntityValidator {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EntityValidator.class.getCanonicalName());
+
     public static <T> boolean isValidationFailed(T item) {
         Set<ConstraintViolation<T>> violations = getViolations(item);
         return violations != null && !violations.isEmpty();

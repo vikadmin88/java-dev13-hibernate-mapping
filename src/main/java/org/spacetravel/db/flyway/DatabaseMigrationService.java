@@ -3,7 +3,7 @@ package org.spacetravel.db.flyway;
 import org.flywaydb.core.Flyway;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spacetravel.utils.HibernatePropertyReader;
+import org.spacetravel.utils.hibernate.HibernatePropertyReader;
 
 public class DatabaseMigrationService {
     private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseMigrationService.class.getCanonicalName());

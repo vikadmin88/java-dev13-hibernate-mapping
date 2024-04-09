@@ -1,4 +1,4 @@
-package org.spacetravel.db.hibernate;
+package org.spacetravel.utils.hibernate;
 
 import lombok.Getter;
 import org.hibernate.SessionFactory;

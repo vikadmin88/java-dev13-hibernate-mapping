@@ -1,39 +1,46 @@
 package org.spacetravel.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.h2.engine.User;
 
 import java.sql.Timestamp;
 
 @Entity
-@Data
+@Data()
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "ticket")
 public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @NotNull
+    @NotNull(message = "createdAt field null impossible")
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @Column(name = "client_id")
-    private long clientId;
+    @NotNull(message = "Client field null impossible")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="client_id", nullable=false)
+    private Client client;
 
-    @NotNull
-    @Size(min = 1, max = 10, message = "The length of the field from_planet_id must be from 1 to 10 characters!")
-    @Column(name = "from_planet_id")
-    private String fromPlanetId;
+    @NotNull(message = "fromPlanet field null impossible")
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+//    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="from_planet_id", nullable=false)
+    private Planet fromPlanet;
 
-    @NotNull
-    @Size(min = 1, max = 10, message = "The length of the field to_planet_id must be from 1 to 10 characters!")
-    @Column(name = "to_planet_id")
-    private String toPlanetId;
-
+    @NotNull(message = "toPlanet field null impossible")
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+//    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="to_planet_id", nullable=false)
+    private Planet toPlanet;
 }

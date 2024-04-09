@@ -1,30 +1,31 @@
 package org.spacetravel.services;
 
-import org.spacetravel.dao.PlanetDao;
+import org.spacetravel.dao.planet.PlanetDao;
+import org.spacetravel.dao.planet.PlanetDaoImpl;
 import org.spacetravel.entity.Planet;
 
 import java.util.List;
 
 public class PlanetCrudService {
 
-    private final PlanetDao planetDao = new PlanetDao();
+    private final PlanetDao planet = new PlanetDaoImpl();
 
     public void savePlanet(Planet planet) {
-        planetDao.save(planet);
+        this.planet.save(planet);
     }
 
     public Planet findPlanetById(String id) {
-        return planetDao.findById(id);
+        return planet.findById(id);
     }
 
     public List<Planet> findPlanetByName(String name) {
-        return planetDao.findByName(name);
+        return planet.findByName(name);
     }
     public void updatePlanet(Planet planet) {
-        planetDao.update(planet);
+        this.planet.update(planet);
     }
 
     public void deletePlanet(Planet planet) {
-        planetDao.delete(planet);
+        this.planet.delete(planet);
     }
 }
